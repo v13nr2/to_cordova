@@ -1,5 +1,5 @@
-base_url = "http://localhost/CORDOVA/git";
-X_API = "9D130421EFB30A0D867A95F4C2C7A976";
+base_url = "http://localhost/CORDOVA/arifakunting";
+X_API = "2D63FCB76054CEEB3183E8F9D96B5D59";
 SERVER_API = "http://api.jogjaide-enterprise.com/";
 
    
