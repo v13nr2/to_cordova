@@ -12,6 +12,7 @@ $(document).ready(function(){
 	}); 
 
 	reloadTotalQTY();
+	reloadTotal();
 });
 
 var barisCounter = 1;
