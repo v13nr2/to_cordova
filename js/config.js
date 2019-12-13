@@ -1,4 +1,4 @@
-base_url = "http://localhost/CORDOVA/arifakunting";
+base_url = "http://localhost/CORDOVA/git";
 X_API = "2D63FCB76054CEEB3183E8F9D96B5D59";
 SERVER_API = "http://api.jogjaide-enterprise.com/";
 
@@ -22,4 +22,8 @@ function cek_login(){
 
 function goto_home(){
 	window.location.href = base_url+"/index.html";
+}
+
+function goto_penjualan(){
+	window.location.href = base_url+"/pages/tables/editable-table.html";
 }
