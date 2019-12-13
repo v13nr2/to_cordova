@@ -25,5 +25,5 @@ function goto_home(){
 }
 
 function goto_penjualan(){
-	window.location.href = base_url+"/pages/tables/editable-table.html";
+	$("#aztira_konten").load("pages/aztira/penjualan.html");
 }

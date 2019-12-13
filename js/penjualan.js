@@ -3,7 +3,7 @@ if(!cek_login()){
 }
 
 $(document).ready(function(){
-	$("#menusamping").load("../../pages/aztira/menusamping.html");
+	$("#menusamping2").load("../../pages/aztira/menusamping.html");
 	$("#userinfo").load("../../pages/aztira/userinfo.html");
 	
 	jQuery("input:text").keyup(function() {    
