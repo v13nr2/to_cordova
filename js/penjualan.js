@@ -11,7 +11,7 @@ $(document).ready(function(){
 	  //console.log(currentTabIndex);
 	}); 
 
-
+	reloadTotalQTY();
 });
 
 var barisCounter = 1;
@@ -34,19 +34,22 @@ function addTR(){
 		
 	$("#mainTable").append(TR);
 	reloadTotalQTY();
+	reloadTotal();
 }
 
 function removeTR(z){
 	$("#tr_ke_"+TR_number).remove();
 	reloadTotalQTY();
+	reloadTotal();
 }
 
 function hitung(z){
-	console.log(z);
+	//console.log(z);
 	harga = $("#harga_"+z).val() * 1;
 	qty = $("#qty_"+z).val() * 1;
 	total = harga * qty;
 	$("#total_"+z).val(total);
+	reloadTotal();
 }
 
 
@@ -67,4 +70,15 @@ function reloadTotalQTY(){
 	}
 	
 	$("#totalqty").html(totalQTY);
+}
+
+function reloadTotal(){
+	total = 0;
+	for(i=0;i<=400;i++){
+		if($('#total_'+i).val()!=undefined){
+			total = total + ($('#total_'+i).val() * 1);
+		}
+	}
+	
+	$("#total").html(total);
 }
