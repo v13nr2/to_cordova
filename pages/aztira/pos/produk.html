@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
 
             <!-- Basic Card - With Loading -->
@@ -53,7 +54,7 @@
 														'<ul class="dropdown-menu pull-right">'+
 															'<li><a href="javascript:void(0);" onclick="goto_add_produk()">Tambah Produk</a></li>'+
 															'<li><a href="javascript:void(0);">Edit Produk ini</a></li>'+
-															'<li><a href="javascript:void(0);">Hapus Produk ini</a></li>'+
+															'<li><a href="javascript:void(0);" onclick="produk_hapus()">Hapus Produk ini</a></li>'+
 														'</ul>'+
 													'</li>'+
 												'</ul>'+
@@ -74,6 +75,28 @@
 				}
             });
 		
+	
+	}
+	
+	function produk_hapus(){
+		
+		Swal.fire({
+		  title: 'Are you sure?',
+		  text: "You won't be able to revert this!",
+		  icon: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes, delete it!'
+		}).then((result) => {
+		  if (result.value) {
+			Swal.fire(
+			  'Deleted!',
+			  'Your file has been deleted.',
+			  'success'
+			)
+		  }
+		})
 	
 	}
 </script>
