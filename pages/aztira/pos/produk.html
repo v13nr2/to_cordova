@@ -7,94 +7,73 @@
                     <small>Please click the refresh button right top of cards you want to activate loading.</small>
                 </h2>
             </div>
-            <div class="row clearfix">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Nama Produk <small>Deskripsi...</small>
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li>
-                                    <a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="timer">
-                                        <i class="material-icons">loop</i>
-                                    </a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);" onclick="goto_add_produk()">Tambah Produk</a></li>
-                                        <li><a href="javascript:void(0);">Edit Produk ini</a></li>
-                                        <li><a href="javascript:void(0);">Hapus Produk ini</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Basic Card Title <small>Description text here...</small>
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li>
-                                    <a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="ios">
-                                        <i class="material-icons">loop</i>
-                                    </a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Basic Card Title <small>Description text here...</small>
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li>
-                                    <a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse">
-                                        <i class="material-icons">loop</i>
-                                    </a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.
-                        </div>
-                    </div>
-                </div>
+            <div class="row clearfix" id="produk_listProduk">
             </div>
             <!-- #END# Basic Card - With Loading -->
         </div>
+
+<script>
+	$(document).ready(function(){
+	
+		produk_getListProduct();
+	
+	});
+	
+	function produk_getListProduct(){
+		$.ajax({
+			url : SERVER_API+"api/aztira_produk/all",
+			methode: 'GET',
+			beforeSend: function(request) {
+					request.setRequestHeader("x-api-key", X_API),
+					request.setRequestHeader("x-token", sessionStorage.getItem("aztira_cust_token"))
+				},
+                data: {
+                },
+                dataType: "json",
+                success: function (response) {
+				  jQuery.each(response.data.aztira_produk, function(index, item) {
+                  
+					TRProdukList = ''+		
+									'<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+
+										'<div class="card">'+
+											'<div class="header">'+
+												'<h2>'+
+													''+item.nama_produk+'<small>Deskripsi...</small>'+
+												'</h2>'+
+												'<ul class="header-dropdown m-r--5">'+
+													'<li>'+
+														'<a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="timer">'+
+															'<i class="material-icons">loop</i>'+
+														'</a>'+
+													'</li>'+
+													'<li class="dropdown">'+
+														'<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'+
+															'<i class="material-icons">more_vert</i>'+
+														'</a>'+
+														'<ul class="dropdown-menu pull-right">'+
+															'<li><a href="javascript:void(0);" onclick="goto_add_produk()">Tambah Produk</a></li>'+
+															'<li><a href="javascript:void(0);">Edit Produk ini</a></li>'+
+															'<li><a href="javascript:void(0);">Hapus Produk ini</a></li>'+
+														'</ul>'+
+													'</li>'+
+												'</ul>'+
+											'</div>'+
+											'<div class="body">'+
+												'Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.'+
+											'</div>'+
+										'</div>'+
+									'</div>';
+
+							$("#produk_listProduk").append(TRProdukList);
+
+				  });
+				
+				}, 
+				error: function(res){
+					
+				}
+            });
+		
+	
+	}
+</script>

@@ -33,3 +33,4 @@
 		sessionStorage.setItem("aztira_cust_email", "");
 		window.location.href = base_url+"/pages/examples/sign-in.html";
 	}
+	

@@ -1,6 +1,6 @@
 base_url = "http://localhost/CORDOVA/git";
-X_API = "2D63FCB76054CEEB3183E8F9D96B5D59";
-SERVER_API = "http://api.jogjaide-enterprise.com/";
+X_API = "646859D797126335C62FE081FB4558C5";
+SERVER_API = "http://doktorsiaga.co.id/";
 
    
 function cek_login(){

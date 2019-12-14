@@ -16,6 +16,7 @@ $(document).ready(function(){
 var barisCounter = 1;
 var set_TR_number = 0;
 var totalQTY = 0;
+var TR_number = 0;
 
 function signout(){
 	window.location.href = "../../pages/examples/sign-in.html";
@@ -37,9 +38,11 @@ function addTR(){
 }
 
 function removeTR(z){
-	$("#tr_ke_"+TR_number).remove();
-	reloadTotalQTY();
-	reloadTotal();
+	if(TR_number != "undefined"){
+		$("#tr_ke_"+TR_number).remove();
+		reloadTotalQTY();
+		reloadTotal();
+	}
 }
 
 function hitung(z){
