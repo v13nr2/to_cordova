@@ -29,3 +29,13 @@ function goto_penjualan(){
 	$("#aztira_konten").load("pages/aztira/penjualan.html");
 	$(".bars").trigger("click");
 }
+
+function goto_data_produk(){
+	$("#aztira_konten").load("pages/aztira/pos/produk.html");
+	$(".bars").trigger("click");
+}
+
+function goto_add_produk(){
+	$("#aztira_konten").load("pages/aztira/pos/produk_add.html");
+	$(".bars").trigger("click");
+}
