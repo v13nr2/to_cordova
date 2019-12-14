@@ -21,9 +21,11 @@ function cek_login(){
 
 
 function goto_home(){
-	window.location.href = base_url+"/index.html";
+	$("#aztira_konten").load("pages/aztira/dashboard.html");
+	$(".bars").trigger("click");
 }
 
 function goto_penjualan(){
 	$("#aztira_konten").load("pages/aztira/penjualan.html");
+	$(".bars").trigger("click");
 }

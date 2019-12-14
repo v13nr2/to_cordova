@@ -3,8 +3,6 @@ if(!cek_login()){
 }
 
 $(document).ready(function(){
-	$("#menusamping2").load("../../pages/aztira/menusamping.html");
-	$("#userinfo").load("../../pages/aztira/userinfo.html");
 	
 	jQuery("input:text").keyup(function() {    
 	  currentTabIndex = parseInt(jQuery(this).val() * 1);
@@ -30,7 +28,7 @@ function addTR(){
 	barisCounter++;
 	TR = '<tr id="tr_ke_'+barisCounter+'"><td><input type="text" id="produk_'+barisCounter+'" size="8"  value="Produk '+barisCounter+'" onfocus="set_TR('+barisCounter+')"  ></td>'+
 			'<td><input type="text" id="harga_'+barisCounter+'" size="5" oninput="hitung('+barisCounter+')" value="0" onfocus="set_TR('+barisCounter+')"  ></td>'+
-			'<td><input type="text" id="qty_'+barisCounter+'"  size="3"  oninput="hitung('+barisCounter+'); reloadTotalQTY()" value="1" onfocus="set_TR('+barisCounter+')"  ></td>'+
+			'<td><input type="text" id="qty_'+barisCounter+'"  size="3"  oninput="hitung('+barisCounter+'); reloadTotalQTY()" value="0" onfocus="set_TR('+barisCounter+')"  ></td>'+
 			'<td><input type="text" id="total_'+barisCounter+'"  size="5" readonly value="0" onfocus="set_TR('+barisCounter+')"  ></td></tr>';
 		
 	$("#mainTable").append(TR);
@@ -53,10 +51,6 @@ function hitung(z){
 	reloadTotal();
 }
 
-
-function goto_penjualan(){
-	window.location.href = base_url+"/pages/tables/editable-table.html";
-}
 
 function set_TR(z){
 	TR_number = z;
