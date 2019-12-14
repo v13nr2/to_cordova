@@ -28,34 +28,32 @@
                             <form id="form_validation" method="POST">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="name" required placeholder="Nama Produk">
+                                        <input type="text" class="form-control" name="nama_produk" required placeholder="Nama Produk">
                                         <label class="form-label"></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="radio" name="gender" id="male" class="with-gap">
+                                    <input type="radio" name="grosir_eceran" id="male" class="with-gap">
                                     <label for="male">Eceran</label>
 
-                                    <input type="radio" name="gender" id="female" class="with-gap">
+                                    <input type="radio" name="grosir_eceran" id="female" class="with-gap">
                                     <label for="female" class="m-l-20">Grosir</label>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <textarea name="description" cols="30" rows="5" class="form-control no-resize" required placeholder="Deskripsi"></textarea>
+                                        <textarea name="deskripsi" cols="30" rows="5" class="form-control no-resize" required placeholder="Deskripsi"></textarea>
                                         <label class="form-label"></label>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="password" required placeholder="Satuan">
+                                        <input type="text" class="form-control" name="satuan" required placeholder="Satuan">
                                         <label class="form-label"></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="checkbox" id="checkbox" name="checkbox">
-                                    <label for="checkbox">I have read and accept the terms</label>
                                 </div>
-                                <button class="btn btn-primary waves-effect" type="button">SUBMIT</button>
+                                <button class="btn btn-primary waves-effect" type="button" onclick="produk_add_submit();">SUBMIT</button>
                             </form>
                         </div>
                     </div>
@@ -64,3 +62,29 @@
             <!-- #END# Basic Validation -->
             
         </div>
+		
+		<script>
+		
+		function produk_add_submit(){
+		
+				$.ajax({
+                type: "post",
+                url: SERVER_API+"api/aztira_produk/add",
+				beforeSend: function(request) {
+					request.setRequestHeader("x-api-key", X_API),
+					request.setRequestHeader("x-token", sessionStorage.getItem("aztira_cust_token"))
+				},
+                data: $("#form_validation").serialize(),
+                dataType: "json",
+                success: function (response) {
+					//console.log("data berhasil disimpan.");
+					goto_data_produk();
+				}, 
+				error: function(res){
+					
+				}
+            });
+		
+		}
+		
+		</script>
