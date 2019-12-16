@@ -21,6 +21,7 @@
 	});
 	
 	function produk_getListProduct(){
+		$("#produk_listProduk").empty();
 		$.ajax({
 			url : SERVER_API+"api/aztira_produk/all",
 			methode: 'GET',
@@ -54,7 +55,7 @@
 														'<ul class="dropdown-menu pull-right">'+
 															'<li><a href="javascript:void(0);" onclick="goto_add_produk()">Tambah Produk</a></li>'+
 															'<li><a href="javascript:void(0);">Edit Produk ini</a></li>'+
-															'<li><a href="javascript:void(0);" onclick="produk_hapus()">Hapus Produk ini</a></li>'+
+															'<li><a href="javascript:void(0);" onclick="produk_hapus(\''+item.uuid+'\',\''+item.nama_produk+'\')">Hapus Produk ini</a></li>'+
 														'</ul>'+
 													'</li>'+
 												'</ul>'+
@@ -78,10 +79,10 @@
 	
 	}
 	
-	function produk_hapus(){
+	function produk_hapus(z, produkname){
 		
 		Swal.fire({
-		  title: 'Are you sure?',
+		  title: 'Anda yakin akan menghapus '+produkname+' ?',
 		  text: "You won't be able to revert this!",
 		  icon: 'warning',
 		  showCancelButton: true,
@@ -90,11 +91,33 @@
 		  confirmButtonText: 'Yes, delete it!'
 		}).then((result) => {
 		  if (result.value) {
-			Swal.fire(
-			  'Deleted!',
-			  'Your file has been deleted.',
-			  'success'
-			)
+			//ajax delete
+				$.ajax({
+			url : SERVER_API+"api/aztira_produk/delete",
+			type: 'POST',
+			beforeSend: function(request) {
+					request.setRequestHeader("x-api-key", X_API),
+					request.setRequestHeader("x-token", sessionStorage.getItem("aztira_cust_token"))
+				},
+                data: {
+					uuid:z,
+                },
+                dataType: "json",
+                success: function (response) {
+				  
+				
+						Swal.fire(
+						  'Deleted!',
+						  'Your file has been deleted.',
+						  'success'
+						)
+						
+						produk_getListProduct();
+				}, 
+				error: function(res){
+					
+				}
+            });
 		  }
 		})
 	
