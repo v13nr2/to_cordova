@@ -16,6 +16,7 @@
                     } else {
 						sessionStorage.setItem("aztira_cust_token", response.token);
 						sessionStorage.setItem("aztira_cust_id", response.data.id);
+						sessionStorage.setItem("aztira_cust_uuid", response.data.random_unik);
 						sessionStorage.setItem("aztira_cust_email", response.data.email);
 						window.location.href = base_url+"/index.html";
 					}
@@ -31,6 +32,7 @@
 		sessionStorage.setItem("aztira_cust_token", "");
 		sessionStorage.setItem("aztira_cust_id", "");
 		sessionStorage.setItem("aztira_cust_email", "");
+		sessionStorage.setItem("aztira_cust_uuid", "");
 		window.location.href = base_url+"/pages/examples/sign-in.html";
 	}
 	

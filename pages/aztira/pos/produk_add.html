@@ -19,7 +19,8 @@
                                     <ul class="dropdown-menu pull-right">
                                         <li><a href="javascript:void(0);">Action</a></li>
                                         <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                        <li><a href="javascript:void(0);" onclick="goto_data_produk()">Kembali ke Halaman List Produk</a></li>
+														
                                     </ul>
                                 </li>
                             </ul>
@@ -74,7 +75,7 @@
 					request.setRequestHeader("x-api-key", X_API),
 					request.setRequestHeader("x-token", sessionStorage.getItem("aztira_cust_token"))
 				},
-                data: $("#form_validation").serialize(),
+                data: $("#form_validation").serialize()+"&uuid="+sessionStorage.getItem("aztira_cust_uuid"),
                 dataType: "json",
                 success: function (response) {
 					//console.log("data berhasil disimpan.");
