@@ -35,7 +35,7 @@
                                 </thead>
                                 <tbody>
                                     <tr id="tr_ke_1">
-                                        <td><input type="text" id="produk_1" size="15" onfocus="set_TR(1)"  value=""></td>
+                                        <td><input type="text" id="produk_1" size="8" onfocus="set_TR(1)"  value="Produk 1"></td>
                                         <td><input type="text" id="harga_1" size="5" onfocus="set_TR(1)"   oninput="hitung(1)" value="0"></td>
                                         <td><input type="text" id="qty_1"  size="3" onfocus="set_TR(1)"   oninput="hitung(1); reloadTotalQTY()"  value="0"></td>
                                         <td><input type="text" id="total_1"  size="5" onfocus="set_TR(1)"   value="0" readonly></td>
@@ -60,7 +60,7 @@
     <script src="js/penjualan.js"></script>
 	<script>
         var demo1 = new autoComplete({
-            selector: '#produk_1',
+            selector: '#unused',
             minChars: 1,
             source: function(term, suggest){
                 term = term.toLowerCase();
@@ -73,7 +73,7 @@
         });
 
         var demo2 = new autoComplete({
-            selector: '#hero-demo',
+            selector: '#produk_1',
             minChars: 0,
             source: function(term, suggest){
                 term = term.toLowerCase();
@@ -90,7 +90,7 @@
             },
             onSelect: function(e, term, item){
                 console.log('Item "'+item.getAttribute('data-langname')+' ('+item.getAttribute('data-lang')+')" selected by '+(e.type == 'keydown' ? 'pressing enter' : 'mouse click')+'.');
-                document.getElementById('advanced-demo').value = item.getAttribute('data-langname')+' ('+item.getAttribute('data-lang')+')';
+                document.getElementById('produk_1').value = item.getAttribute('data-langname')+' ('+item.getAttribute('data-lang')+')';
             }
         });
 
