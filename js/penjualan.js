@@ -27,7 +27,7 @@ function login(){
 
 function addTR(){
 	barisCounter++;
-	TR = '<tr id="tr_ke_'+barisCounter+'"><td><input type="text" id="produk_'+barisCounter+'" size="20"  value="Produk '+barisCounter+'" onfocus="set_TR('+barisCounter+')"  ></td>'+
+	TR = '<tr id="tr_ke_'+barisCounter+'"><td><input type="text" id="produk_'+barisCounter+'" size="20"  value="" onfocus="set_TR('+barisCounter+')"  ></td>'+
 			'<td><input type="text" id="harga_'+barisCounter+'" size="5" oninput="hitung('+barisCounter+')" value="0" onfocus="set_TR('+barisCounter+')"  ></td>'+
 			'<td><input type="text" id="qty_'+barisCounter+'"  size="3"  oninput="hitung('+barisCounter+'); reloadTotalQTY()" value="0" onfocus="set_TR('+barisCounter+')"  ></td>'+
 			'<td><input type="text" id="total_'+barisCounter+'"  size="5" readonly value="0" onfocus="set_TR('+barisCounter+')"  ></td></tr>';
