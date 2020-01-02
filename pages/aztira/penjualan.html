@@ -35,10 +35,10 @@
                                 </thead>
                                 <tbody>
                                     <tr id="tr_ke_1">
-                                        <td><input type="text" id="produk_1" size="20" onfocus="set_TR(1)"  value=""></td>
-                                        <td><input type="text" id="harga_1" size="5" onfocus="set_TR(1)"   oninput="hitung(1)" value="0"></td>
-                                        <td><input type="text" id="qty_1"  size="3" onfocus="set_TR(1)"   oninput="hitung(1); reloadTotalQTY()"  value="0"></td>
-                                        <td><input type="text" id="total_1"  size="5" onfocus="set_TR(1)"   value="0" readonly></td>
+                                        <td><input class="toSend" type="text" id="produk_1" name="produk[]" size="20" onfocus="set_TR(1)"  value=""></td>
+                                        <td><input class="toSend"  type="text" id="harga_1" size="5" name="harga[]" onfocus="set_TR(1)"   oninput="hitung(1)" value="0"></td>
+                                        <td><input class="toSend"  type="text" id="qty_1"  size="3" name="qty[]" onfocus="set_TR(1)"   oninput="hitung(1); reloadTotalQTY()"  value="0"></td>
+                                        <td><input class="toSend"  type="text" id="total_1"  size="5" name="total[]" onfocus="set_TR(1)"   value="0" readonly></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -50,6 +50,7 @@
                                     </tr>
                                 </tfoot>
                             </table>
+							<input type="button" value="Order" onclick="sendingData();" class="btn btn-primary waves-effect">
                         </div>
                     </div>
                 </div>
@@ -116,4 +117,30 @@
 			});
 		}
 	
+	function sendingData(){
+		$.ajax({
+			url : SERVER_API+"api/aztira_transaksi/add",
+			type: 'POST',
+			beforeSend: function(request) {
+					request.setRequestHeader("x-api-key", X_API),
+					request.setRequestHeader("x-token", sessionStorage.getItem("aztira_cust_token"))
+				},
+                data: $(".toSend").serialize(),
+                dataType: "json",
+                success: function (response) {
+					
+					 
+						Swal.fire(
+						  'Sukses!',
+						  response.message,
+						  'success'
+						)
+				
+				}, 
+				error: function(res){
+					
+				}
+            });
+	
+	}
 	</script>
