@@ -81,3 +81,39 @@ function reloadTotal(){
 	
 	$("#total").html(total);
 }
+
+
+function sendingData(){
+		$.ajax({
+			url : SERVER_API+"api/aztira_transaksi/add",
+			type: 'POST',
+			beforeSend: function(request) {
+					request.setRequestHeader("x-api-key", X_API),
+					request.setRequestHeader("x-token", sessionStorage.getItem("aztira_cust_token"))
+				},
+                data: $(".toSend").serialize(),
+                dataType: "json",
+                success: function (response) {
+						var i;
+					 
+						Swal.fire(
+						  'Sukses!',
+						  response.message,
+						  'success'
+						)
+
+						for(i=0;i<=300;i++){
+							$("#tr_ke_"+i).remove();
+							reloadTotalQTY();
+							reloadTotal();
+						}
+
+						addTR();
+				
+				}, 
+				error: function(res){
+					
+				}
+            });
+	
+	}
