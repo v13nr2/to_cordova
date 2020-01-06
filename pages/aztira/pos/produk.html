@@ -30,6 +30,7 @@
 					request.setRequestHeader("x-token", sessionStorage.getItem("aztira_cust_token"))
 				},
                 data: {
+					user_uuid:sessionStorage.getItem("aztira_cust_uuid")
                 },
                 dataType: "json",
                 success: function (response) {

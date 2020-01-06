@@ -1,4 +1,4 @@
-base_url = "http://localhost/CORDOVA/git";
+base_url = "http://192.168.43.136/CORDOVA/git";
 X_API = "646859D797126335C62FE081FB4558C5";
 SERVER_API = "http://doktorsiaga.co.id/";
 
