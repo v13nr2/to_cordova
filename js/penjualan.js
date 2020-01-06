@@ -91,7 +91,7 @@ function sendingData(){
 					request.setRequestHeader("x-api-key", X_API),
 					request.setRequestHeader("x-token", sessionStorage.getItem("aztira_cust_token"))
 				},
-                data: $(".toSend").serialize(),
+                data: $(".toSend").serialize()+"&user_uuid="+sessionStorage.getItem("aztira_cust_uuid"),
                 dataType: "json",
                 success: function (response) {
 						var i;
