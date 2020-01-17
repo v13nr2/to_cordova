@@ -1,4 +1,4 @@
-base_url = "http://192.168.43.136/CORDOVA/git";
+base_url = "http://localhost/pos/to_cordova";
 X_API = "646859D797126335C62FE081FB4558C5";
 SERVER_API = "http://doktorsiaga.co.id/";
 
@@ -27,6 +27,11 @@ function goto_home(){
 
 function goto_penjualan(){
 	$("#aztira_konten").load("pages/aztira/penjualan.html");
+	$(".bars").trigger("click");
+}
+
+function goto_penjualan_list(){
+	$("#aztira_konten").load("pages/aztira/penjualan_list.html");
 	$(".bars").trigger("click");
 }
 
