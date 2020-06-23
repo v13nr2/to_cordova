@@ -54,11 +54,24 @@
                 
 						
 						jQuery.each(response, function(index, item) {
-							trhtml = '<li class="ll">'+
-										'<a href="javascript:void(0)" onclick="goto_home()">'+
-											'<i class="material-icons">home</i>'+
+							trhtml = '<li>'+
+								
+										'<a href="javascript:void(0);" class="menu-toggle" data-toggle="collapse" data-target=".ml-menu'+index+'">'+
+											'<i class="material-icons">swap_calls</i>'+
 											'<span>'+ item.nama_menu +'</span>'+
 										'</a>'+
+										
+										'<ul class="ml-menu'+index+' collapse">'+
+											'<li>'+
+												'<a href="pages/ui/alerts.html">Alerts</a>'+
+											'</li>'+
+											'<li>'+
+												'<a href="pages/ui/animations.html">Animations</a>'+
+											'</li>'+
+								 
+										'</ul>'+
+										
+										
 									'</li>';
 									
 							//alert(item.nama_menu);
