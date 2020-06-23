@@ -34,3 +34,40 @@
 		window.location.href = base_url+"/pages/base/sign-in.html";
 	}
 	
+	
+	function aztira_menu(){
+		trhtml = "";
+		$.ajax({
+                type: "get",
+                url: SERVER_API+"/api/menu_get",
+                data: {
+                },
+				headers: {
+					'Accept':'application/json',
+					'Content-Type':'application/json',
+					'Authorization':'Bearer ' + sessionStorage.getItem("aztira_cust_token")
+				},
+                dataType: "json",
+                success: function (response) {
+                
+						
+						jQuery.each(response, function(index, item) {
+							trhtml = '<li class="ll">'+
+										'<a href="javascript:void(0)" onclick="goto_home()">'+
+											'<i class="material-icons">home</i>'+
+											'<span>'+ item.nama_menu +'</span>'+
+										'</a>'+
+									'</li>';
+									
+							//alert(item.nama_menu);
+							
+							$('#menuUL').append(trhtml);
+						});
+						
+					
+				}, 
+				error: function(res){
+					
+				}
+            });
+	}
