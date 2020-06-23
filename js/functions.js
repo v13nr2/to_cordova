@@ -63,10 +63,10 @@
 										
 										'<ul class="ml-menu'+index+' collapse">'+
 											'<li>'+
-												'<a href="pages/ui/alerts.html">Alerts</a>'+
+												'<a href="#">Alerts</a>'+
 											'</li>'+
 											'<li>'+
-												'<a href="pages/ui/animations.html">Animations</a>'+
+												'<a href="#">Animations</a>'+
 											'</li>'+
 								 
 										'</ul>'+
@@ -86,3 +86,8 @@
 				}
             });
 	}
+	
+	
+function registerme(){
+	alert("register me ");
+}
