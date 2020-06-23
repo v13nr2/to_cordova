@@ -14,7 +14,9 @@
                     if(response.status == false) {
                       
                     } else {
-						sessionStorage.setItem("aztira_cust_token", response.token);
+						sessionStorage.setItem("aztira_cust_token", response.token.token);
+						sessionStorage.setItem("aztira_cust_name", response.data.name);
+						sessionStorage.setItem("aztira_cust_email", response.data.email);
 						sessionStorage.setItem("aztira_cust_id", 1);
 						window.location.href = base_url+"/index.html";
 					}
