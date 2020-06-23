@@ -1,4 +1,4 @@
-base_url = "http://localhost/pos/to_cordova";
+base_url = "http://localhost/git/mlm/frontendMLM";
 X_API = "646859D797126335C62FE081FB4558C5";
 SERVER_API = "http://doktorsiaga.co.id/";
 
