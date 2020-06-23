@@ -33,6 +33,6 @@
 		sessionStorage.setItem("aztira_cust_id", "");
 		sessionStorage.setItem("aztira_cust_email", "");
 		sessionStorage.setItem("aztira_cust_uuid", "");
-		window.location.href = base_url+"/pages/examples/sign-in.html";
+		window.location.href = base_url+"/pages/base/sign-in.html";
 	}
 	

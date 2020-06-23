@@ -19,7 +19,7 @@ var totalQTY = 0;
 var TR_number = 0;
 
 function signout(){
-	window.location.href = "../../pages/examples/sign-in.html";
+	window.location.href = "../../pages/base/sign-in.html";
 }
 function login(){
 	window.location.href = "../../index.html";
