@@ -69,7 +69,7 @@
 											jQuery.each(response, function(index2, item2) {
 												if(item2.parent_id == item.id){
 													trhtml += 	'<li>'+
-															'<a href="#">'+ item2.nama_menu +'</a>'+
+															'<a href="?mn='+item2.linkz+'">'+ item2.nama_menu +'</a>'+
 														'</li>';
 												}
 													
