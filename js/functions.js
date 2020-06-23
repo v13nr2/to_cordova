@@ -17,7 +17,7 @@
 						sessionStorage.setItem("aztira_cust_token", response.token.token);
 						sessionStorage.setItem("aztira_cust_name", response.data.name);
 						sessionStorage.setItem("aztira_cust_email", response.data.email);
-						sessionStorage.setItem("aztira_cust_id", 1);
+						sessionStorage.setItem("aztira_cust_id", response.data.uuid);
 						window.location.href = base_url+"/index.html";
 					}
 				}, 
@@ -96,5 +96,32 @@
 	
 	
 function registerme(){
-	alert("register me ");
+	$.ajax({
+		type: "post",
+		url: SERVER_API+"/api/register",
+		beforeSend: function(request) {
+			//request.setRequestHeader("x-api-key", X_API);
+		},
+		data: {
+			name:  $("#name").val(),
+			email:  $("#email").val(),
+			password:  $("#password").val(),
+			password_confirmation:  $("#password_confirmation").val(),
+		},
+		dataType: "json",
+		success: function (response) {
+			if(response.status == false) {
+				alert("register me ");
+			} else {
+				sessionStorage.setItem("aztira_cust_token", response.token);
+				sessionStorage.setItem("aztira_cust_name", response.user.name);
+				sessionStorage.setItem("aztira_cust_email", response.user.email);
+				sessionStorage.setItem("aztira_cust_id", response.user.uuidx);
+				window.location.href = base_url+"/index.html";
+			}
+		}, 
+		error: function(res){
+			alert("Cek Kembali, Silakan Coba Lagi..");
+		}
+	});
 }
