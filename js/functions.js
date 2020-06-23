@@ -54,29 +54,36 @@
                 
 						
 						jQuery.each(response, function(index, item) {
-							trhtml = '<li>'+
-								
-										'<a href="javascript:void(0);" class="menu-toggle" data-toggle="collapse" data-target=".ml-menu'+index+'">'+
-											'<i class="material-icons">swap_calls</i>'+
-											'<span>'+ item.nama_menu +'</span>'+
-										'</a>'+
+							if(item.parent_id == 0){
 										
-										'<ul class="ml-menu'+index+' collapse">'+
-											'<li>'+
-												'<a href="#">Alerts</a>'+
-											'</li>'+
-											'<li>'+
-												'<a href="#">Animations</a>'+
-											'</li>'+
-								 
-										'</ul>'+
-										
-										
-									'</li>';
+								trhtml = '<li>'+
 									
-							//alert(item.nama_menu);
-							
-							$('#menuUL').append(trhtml);
+											'<a href="javascript:void(0);" class="menu-toggle" data-toggle="collapse" data-target=".ml-menu'+index+'">'+
+												'<i class="material-icons">swap_calls</i>'+
+												'<span>'+ item.nama_menu +'</span>'+
+											'</a>'+
+											
+											'<ul class="ml-menu'+index+' collapse">';
+											
+											
+											jQuery.each(response, function(index2, item2) {
+												if(item2.parent_id == item.id){
+													trhtml += 	'<li>'+
+															'<a href="#">'+ item2.nama_menu +'</a>'+
+														'</li>';
+												}
+													
+											});
+									 
+											trhtml +='</ul>'+
+											
+											
+										'</li>';
+										
+								//alert(item.nama_menu);
+								
+								$('#menuUL').append(trhtml);
+							}
 						});
 						
 					
