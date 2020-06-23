@@ -1,12 +1,12 @@
 	function aztira_login(){
 		$.ajax({
                 type: "post",
-                url: SERVER_API+"api/user/login",
+                url: SERVER_API+"/api/login",
 				beforeSend: function(request) {
-					request.setRequestHeader("x-api-key", X_API);
+					//request.setRequestHeader("x-api-key", X_API);
 				},
                 data: {
-                    username:  $("#email").val(),
+                    email:  $("#email").val(),
                     password:  $("#password").val()
                 },
                 dataType: "json",
@@ -15,9 +15,7 @@
                       
                     } else {
 						sessionStorage.setItem("aztira_cust_token", response.token);
-						sessionStorage.setItem("aztira_cust_id", response.data.id);
-						sessionStorage.setItem("aztira_cust_uuid", response.data.random_unik);
-						sessionStorage.setItem("aztira_cust_email", response.data.email);
+						sessionStorage.setItem("aztira_cust_id", 1);
 						window.location.href = base_url+"/index.html";
 					}
 				}, 

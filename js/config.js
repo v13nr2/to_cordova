@@ -1,6 +1,6 @@
 base_url = "http://localhost/git/mlm/frontendMLM";
 X_API = "646859D797126335C62FE081FB4558C5";
-SERVER_API = "http://doktorsiaga.co.id/";
+SERVER_API = "http://localhost:8000";
 
    
 function cek_login(){
