@@ -17,7 +17,11 @@
 						sessionStorage.setItem("aztira_cust_token", response.token.token);
 						sessionStorage.setItem("aztira_cust_name", response.data.name);
 						sessionStorage.setItem("aztira_cust_email", response.data.email);
-						sessionStorage.setItem("aztira_cust_group", response.grup[0]["namagroup"]);
+						if(response.grup[0] != undefined){
+							sessionStorage.setItem("aztira_cust_group", response.grup[0]["namagroup"]);
+						} else {	
+							sessionStorage.setItem("aztira_cust_group", "Member");
+						}
 						sessionStorage.setItem("aztira_cust_id", response.data.uuid);
 						window.location.href = base_url+"/index.html";
 					}
