@@ -13,6 +13,8 @@ $('document').ready(function(){
 	  case "user_list":
 	  
 			$("#aztira_konten").load("pages/bogormlm/user/list.html");
+			$("#leftsidebar").hide();
+			$("#aztira_konten").css("margin-left", "10px");
 			$(".overlay").trigger("click");
 			$(".bars").trigger("click");
 		
