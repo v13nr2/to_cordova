@@ -105,6 +105,7 @@ function registerme(){
 		data: {
 			name:  $("#name").val(),
 			email:  $("#email").val(),
+			username:  $("#username").val(),
 			password:  $("#password").val(),
 			password_confirmation:  $("#password_confirmation").val(),
 		},
@@ -154,7 +155,7 @@ function aztira_user(){
 						 
 							trhtml = '<tr>'+
                                             '<td>'+nomorist+'.</td>'+
-                                            '<td>Customer Support</td>'+
+                                            '<td>'+item.username+'</td>'+
                                             '<td>'+item.name+'</td>'+
                                             '<td>27</td>'+
                                             '<td>2011/01/25</td>'+
