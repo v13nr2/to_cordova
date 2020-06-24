@@ -135,6 +135,6 @@ function getUrlVars() {
     return vars;
   }
 
-
-		
-		
+function aztira_user(){	
+	alert("get user");
+}		

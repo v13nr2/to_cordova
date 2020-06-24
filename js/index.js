@@ -17,7 +17,10 @@ $('document').ready(function(){
 			$("#aztira_konten").css("margin-left", "10px");
 			$(".overlay").trigger("click");
 			$(".bars").trigger("click");
-		
+			
+			//call function
+			aztira_user();
+			
 		break;
 	}
 	
