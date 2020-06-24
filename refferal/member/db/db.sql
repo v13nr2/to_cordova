@@ -75,11 +75,11 @@ CREATE TABLE IF NOT EXISTS `nng_group` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table apilara.nng_group: ~1 rows (approximately)
+-- Dumping data for table apilara.nng_group: ~2 rows (approximately)
 /*!40000 ALTER TABLE `nng_group` DISABLE KEYS */;
 INSERT INTO `nng_group` (`id`, `name`, `desc`) VALUES
 	(1, 'Admin', 'Super Admin'),
-	(2, 'Default', 'Member MLM');
+	(2, 'Member Default', 'Member Pre Aktivasi MLM');
 /*!40000 ALTER TABLE `nng_group` ENABLE KEYS */;
 
 -- Dumping structure for table apilara.nng_jenis_bonus
@@ -171,12 +171,13 @@ CREATE TABLE IF NOT EXISTS `nng_users_to_group` (
   `user_id` int(11) DEFAULT NULL,
   `group_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table apilara.nng_users_to_group: ~1 rows (approximately)
+-- Dumping data for table apilara.nng_users_to_group: ~2 rows (approximately)
 /*!40000 ALTER TABLE `nng_users_to_group` DISABLE KEYS */;
 INSERT INTO `nng_users_to_group` (`id`, `user_id`, `group_id`) VALUES
-	(1, 1, 1);
+	(1, 1, 1),
+	(2, 2, 2);
 /*!40000 ALTER TABLE `nng_users_to_group` ENABLE KEYS */;
 
 -- Dumping structure for table apilara.nng_user_detail
@@ -205,6 +206,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `uuidx` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `refferal_link` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -217,16 +219,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `username` (`username`),
   KEY `email` (`email`(191)),
   KEY `uuidx` (`uuidx`(191))
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table apilara.users: ~4 rows (approximately)
+-- Dumping data for table apilara.users: ~7 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `uuidx`, `username`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, '6f43adf8-7d65-4f8c-8d09-5cb714327139', '11', 'Nanang Rustianto', 'nanang.manajer@gmail.com', NULL, '$2y$10$SkXqAqETCces8o/whl.kkuYlNe/r1RtZ2ne99GME5DwAyOniObnc2', NULL, '2020-06-23 10:56:41', '2020-06-24 09:12:47'),
-	(2, '9b7ef94f-774b-4afa-bc01-556933b580ad', '22', 'Nanang Agen 234 Dji Sam Soe', 'nanang.programmer@gmail.com', NULL, '$2y$10$x27u8Cv2XbLmRIQAa.sLy.RBeguNpS703dXqk/t4RSGzpBq9WZh4K', NULL, '2020-06-23 10:57:01', '2020-06-24 09:31:36'),
-	(3, '896ab1de-e4a7-40de-8437-87c9064dda64', '33', 'Nanang NIIT MKS 1', 'nanang.programmer1@gmail.com', NULL, '$2y$10$dlcrIGn1qZAagUgX4tvWceiDuFyVwn5uk.PqHOBEml1cuzxFH8Kda', NULL, '2020-06-23 12:28:16', '2020-06-23 12:28:16'),
-	(4, 'e5fe1c4e-25bc-48f6-8770-47e71382f511', '44', 'Atikah Nasyla Putri', 'atikah@atikah.com', NULL, '$2y$10$SWFSNpEDvyHrmbG3Nzfsbeg1A0H6t6nBWqqA7G.wu9ePVlC98NIi.', NULL, '2020-06-23 12:33:35', '2020-06-23 12:33:35'),
-	(5, 'd1738d3a-5072-49f7-818b-1a10a16d48c7', 'ira', 'Aisyah Zahira', 'ira@ira.com', NULL, '$2y$10$jGo9ZyMtws5LdDD97B5c1OyWIQQ4gSht3ME33uJloXX4TcqK/PCVS', NULL, '2020-06-24 06:11:38', '2020-06-24 06:11:38');
+INSERT INTO `users` (`id`, `uuidx`, `refferal_link`, `username`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+	(1, '6f43adf8-7d65-4f8c-8d09-5cb714327139', '', '11', 'Nanang Rustianto, S.Pd., NIIT', 'nanang.manajer@gmail.com', NULL, '$2y$10$SkXqAqETCces8o/whl.kkuYlNe/r1RtZ2ne99GME5DwAyOniObnc2', NULL, '2020-06-23 10:56:41', '2020-06-24 11:00:56'),
+	(2, '9b7ef94f-774b-4afa-bc01-556933b580ad', '', '22', 'Agen 234 Dji Sam Soe', 'nanang.programmer@gmail.com', NULL, '$2y$10$x27u8Cv2XbLmRIQAa.sLy.RBeguNpS703dXqk/t4RSGzpBq9WZh4K', NULL, '2020-06-23 10:57:01', '2020-06-24 10:33:23'),
+	(3, '896ab1de-e4a7-40de-8437-87c9064dda64', '', '33', 'Nanang NIIT MKS 1', 'nanang.programmer1@gmail.com', NULL, '$2y$10$dlcrIGn1qZAagUgX4tvWceiDuFyVwn5uk.PqHOBEml1cuzxFH8Kda', NULL, '2020-06-23 12:28:16', '2020-06-23 12:28:16'),
+	(4, 'e5fe1c4e-25bc-48f6-8770-47e71382f511', '', '44', 'Atikah Nasyla Putri', 'atikah@atikah.com', NULL, '$2y$10$SWFSNpEDvyHrmbG3Nzfsbeg1A0H6t6nBWqqA7G.wu9ePVlC98NIi.', NULL, '2020-06-23 12:33:35', '2020-06-23 12:33:35'),
+	(5, 'd1738d3a-5072-49f7-818b-1a10a16d48c7', '', 'ira', 'Aisyah Zahira Putri', 'ira@ira.com', NULL, '$2y$10$jGo9ZyMtws5LdDD97B5c1OyWIQQ4gSht3ME33uJloXX4TcqK/PCVS', NULL, '2020-06-24 06:11:38', '2020-06-24 10:48:48'),
+	(6, 'c018e9e8-ecec-4e5b-ae97-8bd23c4eb178', '', 'aziizah', 'Aziizah Silvana Putri', 'ziizah@ziizah.com', NULL, '$2y$10$eq0YHHBC16Ao6d7E2InU1ubxk/WrcFE5BRBhIy1SP6AzDdPeeFYGa', NULL, '2020-06-24 10:48:10', '2020-06-24 10:48:10'),
+	(7, '7e008722-c91b-4b7d-b2b8-066e9ea24cbb', '9b7ef94f-774b-4afa-bc01-556933b580ad', 'andi', 'Andi Malik', 'andi@andi.com', NULL, '$2y$10$nOr5SPx7r1E0cpZDVbXLY.q7uF85S9EFDd2L4qW9N5CttLVEEuoIe', NULL, '2020-06-24 12:31:57', '2020-06-24 12:31:57');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
