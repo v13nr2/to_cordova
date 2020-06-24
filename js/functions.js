@@ -51,7 +51,10 @@
 				},
                 dataType: "json",
                 success: function (response) {
-                
+					if(response.status=="Token is Expired"){
+						alert("Token Anda Telah Expired, Silakan Login Kembali.");
+						aztira_logout();
+					}
 						
 						jQuery.each(response, function(index, item) {
 							if(item.parent_id == 0){
@@ -89,7 +92,7 @@
 					
 				}, 
 				error: function(res){
-					
+						alert('Ajax Error');
 				}
             });
 	}
@@ -178,4 +181,32 @@ function aztira_user(){
 
 function goto_profile(){
 	$("#aztira_konten").load("pages/bogormlm/user/profile.html");
+}
+
+function updateProfile(){
+		$.ajax({
+                type: "post",
+                url: SERVER_API+"/api/user_update",
+				headers: {
+					'Accept':'application/json',
+					'Content-Type':'application/json',
+					'Authorization':'Bearer ' + sessionStorage.getItem("aztira_cust_token")
+				},
+                data: {
+                    uuid:  sessionStorage.getItem("aztira_cust_id"),
+                    name:  $("#profile_namalengkap").val()
+                },
+                dataType: "json",
+                success: function (response) {
+                    if(response.status == false) {
+                      
+                    } else {
+						sessionStorage.setItem("aztira_cust_name", $("#profile_namalengkap").val());
+						window.location.href = base_url+"/index.html";
+					}
+				}, 
+				error: function(res){
+					
+				}
+            });	
 }

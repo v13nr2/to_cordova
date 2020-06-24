@@ -1,12 +1,10 @@
-<!-- #END# Inline Layout -->
-            <!-- Inline Layout | With Floating Label -->
+ <!-- Horizontal Layout -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
                                 UPDATE PROFILE
-                                <small>Silakan mengisi data dengan benar.</small>
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -22,28 +20,40 @@
                             </ul>
                         </div>
                         <div class="body">
-                            <form>
+                            <form class="form-horizontal">
                                 <div class="row clearfix">
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                        <div class="form-group form-float">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Nama Lengkap</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control">
-                                                <label class="form-label">Email Address</label>
+                                                <input type="text" id="profile_namalengkap" class="form-control" placeholder="Input Nama Lengkap">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                        <div class="form-group form-float">
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="password_2">Password</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
                                             <div class="form-line">
-                                                <input type="password" class="form-control">
-                                                <label class="form-label">Password</label>
+                                                <input type="password" id="password_2" class="form-control" placeholder="Enter your password">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <input type="checkbox" id="remember_me_5" class="filled-in">
-                                        <label for="remember_me_5">Remember Me</label>
-                                        <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">Update</button>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                                        <input type="checkbox" id="remember_me_3" class="filled-in">
+                                        <label for="remember_me_3">Remember Me</label>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                                        <button type="button" class="btn btn-primary m-t-15 waves-effect" onclick="updateProfile();">UPDATE</button>
                                     </div>
                                 </div>
                             </form>
@@ -51,4 +61,10 @@
                     </div>
                 </div>
             </div>
-            <!-- #END# Inline Layout | With Floating Label -->
+            <!-- #END# Horizontal Layout -->
+			<script>
+			
+			
+	$("#profile_namalengkap").val(sessionStorage.getItem("aztira_cust_name"));
+	
+			</script>
