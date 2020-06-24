@@ -17,6 +17,7 @@
 						sessionStorage.setItem("aztira_cust_token", response.token.token);
 						sessionStorage.setItem("aztira_cust_name", response.data.name);
 						sessionStorage.setItem("aztira_cust_email", response.data.email);
+						sessionStorage.setItem("aztira_cust_group", response.grup[0]["namagroup"]);
 						sessionStorage.setItem("aztira_cust_id", response.data.uuid);
 						window.location.href = base_url+"/index.html";
 					}
@@ -33,6 +34,7 @@
 		sessionStorage.setItem("aztira_cust_id", "");
 		sessionStorage.setItem("aztira_cust_email", "");
 		sessionStorage.setItem("aztira_cust_uuid", "");
+		sessionStorage.setItem("aztira_cust_group", "");
 		window.location.href = base_url+"/pages/base/sign-in.html";
 	}
 	
@@ -181,6 +183,10 @@ function aztira_user(){
 
 function goto_profile(){
 	$("#aztira_konten").load("pages/bogormlm/user/profile.html");
+}
+
+function goto_refferal(){
+	$("#aztira_konten").load("pages/bogormlm/user/referral.html");
 }
 
 function updateProfile(){
