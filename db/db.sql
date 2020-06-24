@@ -30,6 +30,23 @@ INSERT INTO `articles` (`id`, `title`, `content`, `created_at`, `updated_at`) VA
 	(4, 'Bagaimana dengan Bahasa Native', 'Native PHP atau JAVA atau Javascript', '2020-06-08 12:02:41', '2020-06-08 12:02:41');
 /*!40000 ALTER TABLE `articles` ENABLE KEYS */;
 
+-- Dumping structure for table apilara.bmb_binary_table
+DROP TABLE IF EXISTS `bmb_binary_table`;
+CREATE TABLE IF NOT EXISTS `bmb_binary_table` (
+  `binary_id` int(11) DEFAULT NULL,
+  `binary_member_id` int(11) DEFAULT NULL,
+  `jumlah_downline_kiri` int(11) DEFAULT NULL,
+  `jumlah_downline_kanan` int(11) DEFAULT NULL,
+  `jumlah_downline_upgrade_kiri` int(11) DEFAULT NULL,
+  `jumlah_downline_upgrade_kanan` int(11) DEFAULT NULL,
+  `jumlah_pv_kiri` int(11) DEFAULT NULL,
+  `jumlah_pv_kanan` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table apilara.bmb_binary_table: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bmb_binary_table` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bmb_binary_table` ENABLE KEYS */;
+
 -- Dumping structure for table apilara.migrations
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
@@ -158,14 +175,18 @@ INSERT INTO `nng_users_to_group` (`id`, `user_id`, `group_id`) VALUES
 -- Dumping structure for table apilara.nng_user_detail
 DROP TABLE IF EXISTS `nng_user_detail`;
 CREATE TABLE IF NOT EXISTS `nng_user_detail` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(150) NOT NULL,
   `auth_user_id` int(11) NOT NULL DEFAULT '0',
   `nama_lengkap` varchar(150) NOT NULL,
-  `upline` varchar(150) NOT NULL,
-  `sponsor` varchar(150) DEFAULT NULL,
+  `upline_id` varchar(150) NOT NULL,
+  `sponsor_id` varchar(150) DEFAULT NULL,
   `kota` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id_downline_kiri` varchar(150) DEFAULT NULL,
+  `id_downline_kanan` varchar(150) DEFAULT NULL,
+  `posisi` varchar(150) DEFAULT NULL,
+  `jumlah_pv` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`member_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table apilara.nng_user_detail: ~0 rows (approximately)
