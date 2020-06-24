@@ -175,3 +175,7 @@ function aztira_user(){
 			}
 		});
 }		
+
+function goto_profile(){
+	$("#aztira_konten").load("pages/bogormlm/user/profile.html");
+}
