@@ -184,12 +184,13 @@ function goto_profile(){
 }
 
 function updateProfile(){
+	
 		$.ajax({
                 type: "post",
                 url: SERVER_API+"/api/user_update",
 				headers: {
 					'Accept':'application/json',
-					'Content-Type':'application/json',
+					'Content-Type':'application/x-www-form-urlencoded',
 					'Authorization':'Bearer ' + sessionStorage.getItem("aztira_cust_token")
 				},
                 data: {
