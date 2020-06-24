@@ -136,5 +136,41 @@ function getUrlVars() {
   }
 
 function aztira_user(){	
-	alert("get user");
+	trhtml = "";
+		$.ajax({
+			type: "get",
+			url: SERVER_API+"/api/user_list",
+			data: {
+			},
+			headers: {
+				'Accept':'application/json',
+				'Content-Type':'application/json',
+				'Authorization':'Bearer ' + sessionStorage.getItem("aztira_cust_token")
+			},
+			dataType: "json",
+			success: function (response) {
+					nomorist = 1;
+					jQuery.each(response.data, function(index, item) {
+						 
+							trhtml = '<tr>'+
+                                            '<td>'+nomorist+'.</td>'+
+                                            '<td>Customer Support</td>'+
+                                            '<td>'+item.name+'</td>'+
+                                            '<td>27</td>'+
+                                            '<td>2011/01/25</td>'+
+                                            '<td>$112,000</td>'+
+                                            '<th>Kota</th>'+
+                                            '<th>'+item.email+'</th>'+
+                                            '<th>Tanggal Join</th>'+
+                                            '<th>Aktifkan</th>'+
+                                        '</tr>';
+							//alert(item.name);		
+							$('#userList').append(trhtml);
+							nomorist++;
+					});
+			}, 
+			error: function(res){
+				alert('ajax err');
+			}
+		});
 }		
