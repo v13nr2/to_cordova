@@ -164,7 +164,7 @@ function aztira_user(){
                                             '<td>'+item.username+'</td>'+
                                             '<td>'+item.name+'</td>'+
                                             '<td>27</td>'+
-                                            '<td>2011/01/25</td>'+
+                                            '<td>'+item.refferal_link+'</td>'+
                                             '<td>$112,000</td>'+
                                             '<th>Kota</th>'+
                                             '<th>'+item.email+'</th>'+
