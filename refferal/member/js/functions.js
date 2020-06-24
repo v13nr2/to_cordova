@@ -113,6 +113,7 @@ function registerme(){
 			username:  $("#username").val(),
 			password:  $("#password").val(),
 			password_confirmation:  $("#password_confirmation").val(),
+			referal_link:  $("#referal_link").val(),
 		},
 		dataType: "json",
 		success: function (response) {

@@ -40,6 +40,14 @@
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
+                            <input type="text" class="form-control" name="referal_link" id="referal_link" placeholder="Referal Link" readonly autofocus>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
                             <input type="text" class="form-control" name="namesurname" id="name" placeholder="Nama Lengkap" required autofocus>
                         </div>
                     </div>
@@ -118,7 +126,12 @@
     <script src="../../js/config.js"></script>
     <script src="../../js/wda.js"></script>
     <script src="../../js/functions.js"></script>
-	
+	<script>
+		
+		var fType = getUrlVars()["refferal"];
+		
+		$('#referal_link').val(fType);
+	</script>
 	
 </body>
 
