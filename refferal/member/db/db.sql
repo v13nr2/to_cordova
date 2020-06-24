@@ -11,6 +11,12 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+
+-- Dumping database structure for apilara
+DROP DATABASE IF EXISTS `apilara`;
+CREATE DATABASE IF NOT EXISTS `apilara` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `apilara`;
+
 -- Dumping structure for table apilara.articles
 DROP TABLE IF EXISTS `articles`;
 CREATE TABLE IF NOT EXISTS `articles` (
@@ -67,12 +73,13 @@ CREATE TABLE IF NOT EXISTS `nng_group` (
   `name` varchar(50) DEFAULT NULL,
   `desc` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table apilara.nng_group: ~1 rows (approximately)
 /*!40000 ALTER TABLE `nng_group` DISABLE KEYS */;
 INSERT INTO `nng_group` (`id`, `name`, `desc`) VALUES
-	(1, 'Admin', 'Super Admin');
+	(1, 'Admin', 'Super Admin'),
+	(2, 'Default', 'Member MLM');
 /*!40000 ALTER TABLE `nng_group` ENABLE KEYS */;
 
 -- Dumping structure for table apilara.nng_jenis_bonus
@@ -198,6 +205,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `uuidx` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -206,17 +214,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
   KEY `email` (`email`(191)),
   KEY `uuidx` (`uuidx`(191))
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table apilara.users: ~4 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `uuidx`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, '6f43adf8-7d65-4f8c-8d09-5cb714327139', 'Nanang Pro', 'nanang.manajer@gmail.com', NULL, '$2y$10$SkXqAqETCces8o/whl.kkuYlNe/r1RtZ2ne99GME5DwAyOniObnc2', NULL, '2020-06-23 10:56:41', '2020-06-23 10:56:41'),
-	(2, '9b7ef94f-774b-4afa-bc01-556933b580ad', 'Nanang NIIT MKS', 'nanang.programmer@gmail.com', NULL, '$2y$10$x27u8Cv2XbLmRIQAa.sLy.RBeguNpS703dXqk/t4RSGzpBq9WZh4K', NULL, '2020-06-23 10:57:01', '2020-06-23 10:57:01'),
-	(3, '896ab1de-e4a7-40de-8437-87c9064dda64', 'Nanang NIIT MKS 1', 'nanang.programmer1@gmail.com', NULL, '$2y$10$dlcrIGn1qZAagUgX4tvWceiDuFyVwn5uk.PqHOBEml1cuzxFH8Kda', NULL, '2020-06-23 12:28:16', '2020-06-23 12:28:16'),
-	(4, 'e5fe1c4e-25bc-48f6-8770-47e71382f511', 'Atikah Nasyla Putri', 'atikah@atikah.com', NULL, '$2y$10$SWFSNpEDvyHrmbG3Nzfsbeg1A0H6t6nBWqqA7G.wu9ePVlC98NIi.', NULL, '2020-06-23 12:33:35', '2020-06-23 12:33:35');
+INSERT INTO `users` (`id`, `uuidx`, `username`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+	(1, '6f43adf8-7d65-4f8c-8d09-5cb714327139', '11', 'Nanang Rustianto', 'nanang.manajer@gmail.com', NULL, '$2y$10$SkXqAqETCces8o/whl.kkuYlNe/r1RtZ2ne99GME5DwAyOniObnc2', NULL, '2020-06-23 10:56:41', '2020-06-24 09:12:47'),
+	(2, '9b7ef94f-774b-4afa-bc01-556933b580ad', '22', 'Nanang Agen 234 Dji Sam Soe', 'nanang.programmer@gmail.com', NULL, '$2y$10$x27u8Cv2XbLmRIQAa.sLy.RBeguNpS703dXqk/t4RSGzpBq9WZh4K', NULL, '2020-06-23 10:57:01', '2020-06-24 09:31:36'),
+	(3, '896ab1de-e4a7-40de-8437-87c9064dda64', '33', 'Nanang NIIT MKS 1', 'nanang.programmer1@gmail.com', NULL, '$2y$10$dlcrIGn1qZAagUgX4tvWceiDuFyVwn5uk.PqHOBEml1cuzxFH8Kda', NULL, '2020-06-23 12:28:16', '2020-06-23 12:28:16'),
+	(4, 'e5fe1c4e-25bc-48f6-8770-47e71382f511', '44', 'Atikah Nasyla Putri', 'atikah@atikah.com', NULL, '$2y$10$SWFSNpEDvyHrmbG3Nzfsbeg1A0H6t6nBWqqA7G.wu9ePVlC98NIi.', NULL, '2020-06-23 12:33:35', '2020-06-23 12:33:35'),
+	(5, 'd1738d3a-5072-49f7-818b-1a10a16d48c7', 'ira', 'Aisyah Zahira', 'ira@ira.com', NULL, '$2y$10$jGo9ZyMtws5LdDD97B5c1OyWIQQ4gSht3ME33uJloXX4TcqK/PCVS', NULL, '2020-06-24 06:11:38', '2020-06-24 06:11:38');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
